@@ -1,7 +1,6 @@
-import React, {Component} from "react";
-import Cell from "./Cell";
+import React, { Component } from 'react';
+import Cell from './Cell';
 import './Board.css';
-
 
 /** Game board of Lights out.
  *
@@ -30,59 +29,63 @@ import './Board.css';
  **/
 
 class Board extends Component {
+	constructor(props) {
+		super(props);
 
-  constructor(props) {
-    super(props);
+		// TODO: set initial state
+	}
 
-    // TODO: set initial state
-  }
+	/** create a board nrows high/ncols wide, each cell randomly lit or unlit */
 
-  /** create a board nrows high/ncols wide, each cell randomly lit or unlit */
+	createBoard() {
+		let board = [];
+		// TODO: create array-of-arrays of true/false values
+		return board;
+	}
 
-  createBoard() {
-    let board = [];
-    // TODO: create array-of-arrays of true/false values
-    return board
-  }
+	/** handle changing a cell: update board & determine if winner */
 
-  /** handle changing a cell: update board & determine if winner */
+	flipCellsAround(coord) {
+		let { ncols, nrows } = this.props;
+		let board = this.state.board;
+		let [ y, x ] = coord.split('-').map(Number);
 
-  flipCellsAround(coord) {
-    let {ncols, nrows} = this.props;
-    let board = this.state.board;
-    let [y, x] = coord.split("-").map(Number);
+		function flipCell(y, x) {
+			// if this coord is actually on board, flip it
 
+			if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
+				board[y][x] = !board[y][x];
+			}
+		}
 
-    function flipCell(y, x) {
-      // if this coord is actually on board, flip it
+		// TODO: flip this cell and the cells around it
 
-      if (x >= 0 && x < ncols && y >= 0 && y < nrows) {
-        board[y][x] = !board[y][x];
-      }
-    }
+		// win when every cell is turned off
+		// TODO: determine is the game has been won
 
-    // TODO: flip this cell and the cells around it
+		this.setState({ board, hasWon });
+	}
 
-    // win when every cell is turned off
-    // TODO: determine is the game has been won
+	/** Render game board or winning message. */
 
-    this.setState({board, hasWon});
-  }
+	render() {
+		return (
+			<table className="Board">
+				<tbody>
+					<tr>
+						<Cell isLit={true} />
+					</tr>
+				</tbody>
+			</table>
+		);
+		// if the game is won, just show a winning msg & render nothing else
 
+		// TODO
 
-  /** Render game board or winning message. */
+		// make table board
 
-  render() {
-
-    // if the game is won, just show a winning msg & render nothing else
-
-    // TODO
-
-    // make table board
-
-    // TODO
-  }
+		// TODO
+	}
 }
-
 
 export default Board;
