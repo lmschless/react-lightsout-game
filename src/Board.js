@@ -112,9 +112,15 @@ class Board extends Component {
 			tblBoard.push(<tr>{row}</tr>);
 		}
 		return (
-			<table className="Board">
-				<tbody>{tblBoard}</tbody>
-			</table>
+			<div>
+				<div className="Board-title">
+					<div className="neon-orange">Lights</div>
+					<div className="neon-blue">Out</div>
+				</div>
+				<table className="Board">
+					<tbody>{tblBoard}</tbody>
+				</table>
+			</div>
 		);
 		// if the game is won, just show a winning msg & render nothing else
 
