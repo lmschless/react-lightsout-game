@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 export default class test extends Component {
 	constructor(props) {
 		super(props);
+		// create state for each input value, set to empty string,
+		// then create helper methods to update this state.
 		this.state = { username: '' };
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -13,6 +15,7 @@ export default class test extends Component {
 	}
 
 	handleSubmit(evt) {
+		evt.preventDefault();
 		alert(`You typed: ${this.state.username}`);
 		this.setState({ username: '' });
 	}
